@@ -6,7 +6,7 @@ import React, { useRef, useEffect } from "react";
 import "./header.scss";
 import Logo from "../../assets/tmovie.png";
 
-import { Link, Switch, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const headerNav = [
   {
