@@ -27,7 +27,7 @@ const movieApi = {
     return axiosClient.get(url, params);
   },
   getVideo: (cate, id) => {
-    const url = category[cate] + "/" + id + "/video";
+    const url = category[cate] + "/" + id + "/videos";
     return axiosClient.get(url, { params: {} });
   },
   search: (cate, params) => {
