@@ -69,10 +69,8 @@ const HeroSlideTeam = (props) => {
     const videos = await movieApi.getVideo(category.movie, item.id);
 
     if (videos.results.length > 0) {
-      const videSrc =
-        "https://www.youtube.com/embed/" +
-        videos.results[0].key;
-        console.log(`this url video ${videSrc}`)
+      const videSrc = "https://www.youtube.com/embed/" + videos.results[0].key;
+      // console.log(`this url video ${videSrc}`);
       modal
         .querySelector(".modal__content > iframe")
         .setAttribute("src", videSrc);
