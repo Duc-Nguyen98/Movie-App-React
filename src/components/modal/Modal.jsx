@@ -27,7 +27,7 @@ export const ModalContent = (props) => {
   const contentRef = useRef(null);
   const closeModal = () => {
     contentRef.current.parenNode.classList.remove("active");
-    if (prop.onClose) props.onClose();
+    if (props.onClose) props.onClose();
   };
   return (
     <div ref={contentRef} className="modal__content">
