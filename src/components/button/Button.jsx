@@ -3,6 +3,8 @@ Title:  move-app-react
 Date:   12-Oct-2021
 ==========================================*/
 import React from "react";
+import PropTypes from "prop-types";
+
 
 const Button = (props) => {
   return (
@@ -26,6 +28,6 @@ const OutlineButton = (props) => {
   );
 };
 Button.propTypes = {
-  onClick: PropsTypes.func,
+  onClick: PropTypes.func,
 };
 export default Button;
