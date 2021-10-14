@@ -1,0 +1,39 @@
+{
+  // Place your global snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
+  // description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope
+  // is left empty or omitted, the snippet gets applied to all languages. The prefix is what is
+  // used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
+  // Placeholders with the same ids are connected.
+  // Example:
+  "Print to console": {
+    "scope": "javascript,typescript,javascriptreact",
+    "prefix": "reactpt",
+    "body": [
+      "/*==========================================",
+      "Title:  $WORKSPACE_NAME",
+      "Date:   $CURRENT_DATE-$CURRENT_MONTH_NAME_SHORT-$CURRENT_YEAR",
+      "==========================================*/",
+      "import React from \"react\";",
+      "import PropTypes from \"prop-types\";",
+      "import styled from \"./$TM_FILENAME_BASE.module.css\";",
+      "",
+      "",
+      "const $TM_FILENAME_BASE  = props => {",
+      "    return(",
+      "        <div>",
+      "            $TM_FILENAME_BASE",
+      "        </div>",
+      "    );",
+      "}",
+
+      "$TM_FILENAME_BASE.propTypes = {",
+      "",
+      "",
+      "}",
+
+      "export default $TM_FILENAME_BASE;"
+    ],
+    "description": "Create new file react js with function name is current fileName! & Add PropTypes Library - propTypes property. React gives us a method to check for props in each component "
+  }
+}

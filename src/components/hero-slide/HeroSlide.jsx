@@ -12,6 +12,7 @@ import apiConfig from "../../api/apiConfig";
 import Button, { OutlineButton } from "../button/Button";
 import Modal, { ModalContent } from "../modal/Modal";
 
+
 const HeroSlide = () => {
   SwiperCore.use([Autoplay]);
   const [movieItems, setMovieItems] = useState([]);
@@ -22,7 +23,7 @@ const HeroSlide = () => {
         const response = await movieApi.getMovieList(movieType.popular, {
           params,
         });
-        setMovieItems(response.results.slice(1, 4));
+        setMovieItems(response.results.slice(0, 6));
         console.log(response);
       } catch (err) {
         console.log(err);
@@ -37,7 +38,8 @@ const HeroSlide = () => {
         grabCursor={true}
         spaceBetween={0}
         slidesPerView={1}
-        // autoplay={{delay:3000}}
+        // autoplay={{ delay: 3000 }}
+        loop={true}
       >
         {movieItems.map((item, i) => (
           <SwiperSlide key={i}>
