@@ -2,12 +2,13 @@
 Title:  move-app-react
 Date:   14-Oct-2021
 ==========================================*/
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "./movie-grid.scss";
 import MovieCard from "../movie-card/MovieCard";
 import movieApi, { category, movieType, tvType } from "../../api/tmdbApi";
-import { useParams } from "react-router-dom";
-import { OutlineButton } from "../button/Button";
+import { useParams, useHistory } from "react-router";
+import Button, { OutlineButton } from "../button/Button";
+import Input from "../input/Input";
 
 const MovieGrid = (props) => {
   const [items, setItems] = useState([]);
@@ -29,12 +30,12 @@ const MovieGrid = (props) => {
 
           default:
             response = await movieApi.getTvList(tvType.popular, { params });
-
             break;
         }
       } else {
         const params = { query: keyword };
         response = await movieApi.search(props.category, { params });
+        console.log(`this ${JSON.stringify(response)}`)
       }
       setItems(response.results);
       setTotalPage(response.total_pages);
@@ -70,6 +71,9 @@ const MovieGrid = (props) => {
 
   return (
     <>
+      <div className="section mb-3">
+        <MovieSearch category={props.category} keyword={keyword}/>
+      </div>
       <div className="movie-grid">
         {items.map((item, i) => (
           <MovieCard key={i} item={item} category={props.category} />
@@ -84,6 +88,41 @@ const MovieGrid = (props) => {
         </div>
       ) : null}
     </>
+  );
+};
+
+const MovieSearch = (props) => {
+  const history = useHistory();
+  const [keyWord, setKeyWord] = useState(props.keyWord ? props.keyWord : "");
+
+  const goToSearch = useCallback(() => {
+    if (keyWord.trim().length > 0) {
+      history.push(`${category[props.category]}/search/${keyWord}`);
+    }
+  }, [keyWord, props.category, history]);
+
+  useEffect(() => {
+    const enterEvent = (e) => {
+      e.preventDefault();
+      if (e.keyCode === 13) {
+        goToSearch();
+      }
+    };
+    document.addEventListener("keyup", enterEvent);
+    return () => {
+      document.removeEventListener("keyup", enterEvent);
+    };
+  }, [keyWord, goToSearch]);
+  return (
+    <div className="movie-search">
+      <Input
+        type="text"
+        placeholder="Enter Keyword"
+        value={keyWord}
+        onChange={(e) => setKeyWord(e.target.value)}
+      />
+      <Button className="small" onClick={goToSearch}>Search</Button>
+    </div>
   );
 };
 export default MovieGrid;
