@@ -6,7 +6,7 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Home from "../pages/Home";
 import Catalog from "../pages/Catalog";
-import Detail from "../pages/Detail";
+import Detail from "../pages/detail/Detail";
 
 const Routers = () => {
   return (
