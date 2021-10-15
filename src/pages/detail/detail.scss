@@ -86,3 +86,28 @@
       }
   }
 }
+
+
+.casts{
+  display:grid;
+  grid-template-columns: repeat(auto-fill,minmax(90px,1fr));
+  gap:10px;
+
+  &__item{
+    &__img{
+      padding-top: 160px;
+      background-size: cover;
+      margin-bottom: .5rem;
+    }
+    &__name{
+      font-size: .8rem;
+    }
+  }
+}
+
+.video{
+  margin-bottom: 3rem;
+  &__title{
+    margin-bottom:1.5rem;
+  }
+}

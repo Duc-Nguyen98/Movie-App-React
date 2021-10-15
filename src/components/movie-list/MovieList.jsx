@@ -8,10 +8,7 @@ import PropTypes from "prop-types";
 import "./movie-list.scss";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Link } from "react-router-dom";
-import Button from "../button/Button";
 import movieApi, { category } from "../../api/tmdbApi";
-import apiConfig from "../../api/apiConfig";
 import MovieCard from "../movie-card/MovieCard";
 
 const MovieList = (props) => {
@@ -35,9 +32,8 @@ const MovieList = (props) => {
       }
       setItems(response.results);
     };
-
     getList();
-  }, []);
+  }, [props.category,props.id,props.type]);
   return (
     <div className="movie-list">
       <Swiper grabCursor={true} spaceBetween={10} slidesPerView={"auto"}>

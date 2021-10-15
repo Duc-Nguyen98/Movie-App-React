@@ -7,6 +7,9 @@ import { useParams } from "react-router-dom";
 import movieApi from "../../api/tmdbApi";
 import apiConfig from "../../api/apiConfig";
 import "./detail.scss";
+import CastList from "./CastList";
+import VideoList from "./VideoList";
+import MovieList from "../../components/movie-list/MovieList";
 
 const Detail = () => {
   const { category, id } = useParams();
@@ -44,21 +47,33 @@ const Detail = () => {
               ></div>
             </div>
             <div className="movie-content__info">
-                <h1 className="title">
-                    {item.title || item.name}
-                </h1>
-                <div className="genres">
-                    {item.genres && item.genres.slice(0,5).map((genre,i)=>(
-                        <span key={i} className="genres__item">{genre.name}</span>
-                    ))}
+              <h1 className="title">{item.title || item.name}</h1>
+              <div className="genres">
+                {item.genres &&
+                  item.genres.slice(0, 5).map((genre, i) => (
+                    <span key={i} className="genres__item">
+                      {genre.name}
+                    </span>
+                  ))}
+              </div>
+              <p className="overview">{item.overview}</p>
+              <div className="cast">
+                <div className="section__header">
+                  <h2>Casts</h2>
                 </div>
-                <p className="overview">{item.overview}</p>
-                <div className="cast">
-                    <div className="section__header">
-                        <h2>Casts</h2>
-                    </div>
-                    {/* casts list */}
-                </div>
+                <CastList id={item.id} />
+              </div>
+            </div>
+          </div>
+          <div className="container">
+            <div className="section mb-3">
+              <VideoList id={item.id} />
+            </div>
+            <div className="section mb-3">
+              <div className="section__header mb-2">
+                <h2>Similar</h2>
+              </div>
+              <MovieList category={category} type="similar" id={item.id}/>
             </div>
           </div>
         </>
