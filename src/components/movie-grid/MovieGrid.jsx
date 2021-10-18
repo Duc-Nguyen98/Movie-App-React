@@ -15,6 +15,7 @@ const MovieGrid = (props) => {
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
   const { keyword } = useParams();
+  const [checkKeyWord, setCheckKeyWord] = useState(false);
 
   useEffect(() => {
     const getList = async () => {
@@ -35,6 +36,8 @@ const MovieGrid = (props) => {
       } else {
         const params = { query: keyword };
         response = await movieApi.search(props.category, { params });
+        // response.results.length === 0 && setCheckKeyWord(true);
+        // return setCheckKeyWord(false);
       }
       setItems(response.results);
       setTotalPage(response.total_pages);
@@ -73,11 +76,17 @@ const MovieGrid = (props) => {
       <div className="section mb-3">
         <MovieSearch category={props.category} keyword={keyword} />
       </div>
-      <div className="movie-grid">
-        {items.map((item, i) => (
-          <MovieCard key={i} item={item} category={props.category} />
-        ))}
-      </div>
+      {Object.keys(items).length === 0 ? (
+        <h2 style={{ textAlign: "center", fontSize: "2rem" }}>
+          Movie not found, please try again!
+        </h2>
+      ) : (
+        <div className="movie-grid">
+          {items.map((item, i) => (
+            <MovieCard key={i} item={item} category={props.category} />
+          ))}
+        </div>
+      )}
 
       {page < totalPage ? (
         <div className="movie-grid__loadmore">
@@ -95,7 +104,9 @@ const MovieSearch = (props) => {
   const [keyWord, setKeyWord] = useState(props.keyWord ? props.keyWord : "");
   const goToSearch = useCallback(() => {
     if (keyWord.trim().length > 0) {
-      history.replace({ pathname: `/${category[props.category]}/search/`+keyWord })
+      history.replace({
+        pathname: `/${category[props.category]}/search/` + keyWord,
+      });
       setKeyWord("");
     }
   }, [keyWord, props.category, history]);

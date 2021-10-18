@@ -37,7 +37,6 @@ const HeroSlide = () => {
         grabCursor={true}
         spaceBetween={0}
         slidesPerView={1}
-        // autoplay={{ delay: 3000 }}
         loop={true}
       >
         {movieItems.map((item, i) => (
@@ -71,7 +70,6 @@ const HeroSlideTeam = (props) => {
 
     if (videos.results.length > 0) {
       const videSrc = "https://www.youtube.com/embed/" + videos.results[0].key;
-      // console.log(`this url video ${videSrc}`);
       modal
         .querySelector(".modal__content > iframe")
         .setAttribute("src", videSrc);
@@ -85,7 +83,6 @@ const HeroSlideTeam = (props) => {
       className={`hero-slide__item ${props.className}`}
       style={{ backgroundImage: `url(${background})` }}
     >
-      {/* {item.title} */}
       <div className="hero-slide__item__content container">
         <div className="hero-slide__item__content__info">
           <h2 className="title">{item.title}</h2>

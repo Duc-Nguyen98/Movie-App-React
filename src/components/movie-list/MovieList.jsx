@@ -34,7 +34,6 @@ const MovieList = (props) => {
     };
     getList();
   }, [props.category, props.id, props.type]);
-  // console.log(`this`+items);
 
   return (
     <div className="movie-list">

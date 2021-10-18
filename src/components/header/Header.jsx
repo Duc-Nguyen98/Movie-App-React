@@ -26,9 +26,7 @@ const headerNav = [
 const Header = () => {
   const { pathname } = useLocation();
   const headerRef = useRef(null);
-  //   console.log(`this ${pathname}`);
   const active = headerNav.findIndex((e) => e.path === pathname);
-  //   console.log(`this ${active}`)
 
   useEffect(() => {
     const shrinkHeader = () => {
@@ -52,9 +50,8 @@ const Header = () => {
       <div className="header__wrap container">
         <div className="logo">
           <NavLink to="/">
-            <img src={LogoText} alt="BeeMovies-Logo" />{" "}
+            <img src={LogoText} alt="BeeMovies-Logo" />
           </NavLink>
-          {/* <Link to="/">tMovies</Link> */}
         </div>
         <ul className="header__nav">
           {headerNav.map((e, i) => (
