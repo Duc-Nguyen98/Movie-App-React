@@ -11,7 +11,7 @@ import { category, movieType, tvType } from "../api/tmdbApi";
 
 const Home = () => {
   return (
-    <div>
+    <>
       <HeroSlide />
       <div className="container">
         <div className="section mb">
@@ -57,7 +57,7 @@ const Home = () => {
         </div>
       </div>
       <MovieList category={category.tv} type={tvType.top_rated} />
-    </div>
+    </>
   );
 };
 export default Home;

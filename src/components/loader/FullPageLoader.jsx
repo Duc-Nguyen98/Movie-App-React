@@ -3,11 +3,13 @@ Title:  move-app-react
 Date:   18-Oct-2021
 ==========================================*/
 import React from "react";
+import ReactDOM from "react-dom";
+
 import "./full-page-loader.scss";
 
-const FullPageLoader = () => {
+const PageLoading = () => {
   return (
-    <>
+    <section>
       <div className="loader">
         <span style={{ "--i": 1 }} />
         <span style={{ "--i": 2 }} />
@@ -31,7 +33,19 @@ const FullPageLoader = () => {
         <span style={{ "--i": 20 }} />
         <div className="loader__bee"></div>
       </div>
+    </section>
+  );
+};
+
+const FullPageLoader = () => {
+  return (
+    <>
+      {ReactDOM.createPortal(
+        <PageLoading />,
+        document.getElementById("loading")
+      )}
     </>
   );
 };
+
 export default FullPageLoader;
