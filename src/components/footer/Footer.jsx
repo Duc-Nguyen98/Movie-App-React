@@ -6,7 +6,7 @@ import React from "react";
 import "./footer.scss";
 import { Link } from "react-router-dom";
 import BackGround from "../../assets/footer-bg.jpg";
-import Logo from "../../assets/tmovie.png";
+import LogoText from "../../assets/logo-text.png";
 
 const Footer = () => {
   return (
@@ -14,8 +14,9 @@ const Footer = () => {
       <div className="footer__content container">
         <div className="footer__content__logo">
           <div className="logo">
-            <img src={Logo} alt="BeeMovies-Logo" />
-            <Link to="/">tMovies</Link>
+            <img src={LogoText} alt="BeeMovies-Logo" />
+
+            {/* <Link to="/">tMovies</Link> */}
           </div>
         </div>
         <div className="footer__content__menus">
