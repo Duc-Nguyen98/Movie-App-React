@@ -8,19 +8,22 @@ import Footer from "./components/footer/Footer";
 
 import Routers from "./config/Routers";
 
+import FullPageLoader from "./components/loader/FullPageLoader";
+
 function App() {
   return (
-    <BrowserRouter>
-      <Route
-        render={(props) => (
-          <>
-            <Header {...props} />
-            <Routers />
-            <Footer />
-          </>
-        )}
-      />
-    </BrowserRouter>
+    // <BrowserRouter>
+    //   <Route
+    //     render={(props) => (
+    //       <>
+    //         <Header {...props} />
+    //         <Routers />
+    //         <Footer />
+    //       </>
+    //     )}
+    //   />
+    // </BrowserRouter>
+    <FullPageLoader />
   );
 }
 
