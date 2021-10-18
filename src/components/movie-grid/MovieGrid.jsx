@@ -35,7 +35,6 @@ const MovieGrid = (props) => {
       } else {
         const params = { query: keyword };
         response = await movieApi.search(props.category, { params });
-        console.log(`this ${JSON.stringify(response)}`)
       }
       setItems(response.results);
       setTotalPage(response.total_pages);
@@ -72,7 +71,7 @@ const MovieGrid = (props) => {
   return (
     <>
       <div className="section mb-3">
-        <MovieSearch category={props.category} keyword={keyword}/>
+        <MovieSearch category={props.category} keyword={keyword} />
       </div>
       <div className="movie-grid">
         {items.map((item, i) => (
@@ -94,10 +93,10 @@ const MovieGrid = (props) => {
 const MovieSearch = (props) => {
   const history = useHistory();
   const [keyWord, setKeyWord] = useState(props.keyWord ? props.keyWord : "");
-
   const goToSearch = useCallback(() => {
     if (keyWord.trim().length > 0) {
-      history.push(`${category[props.category]}/search/${keyWord}`);
+      history.replace({ pathname: `/${category[props.category]}/search/`+keyWord })
+      setKeyWord("");
     }
   }, [keyWord, props.category, history]);
 
@@ -121,7 +120,9 @@ const MovieSearch = (props) => {
         value={keyWord}
         onChange={(e) => setKeyWord(e.target.value)}
       />
-      <Button className="small" onClick={goToSearch}>Search</Button>
+      <Button className="small" onClick={goToSearch}>
+        Search
+      </Button>
     </div>
   );
 };

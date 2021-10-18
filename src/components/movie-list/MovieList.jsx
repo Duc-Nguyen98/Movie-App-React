@@ -33,15 +33,21 @@ const MovieList = (props) => {
       setItems(response.results);
     };
     getList();
-  }, [props.category,props.id,props.type]);
+  }, [props.category, props.id, props.type]);
+  // console.log(`this`+items);
+
   return (
     <div className="movie-list">
       <Swiper grabCursor={true} spaceBetween={10} slidesPerView={"auto"}>
-        {items.map((item, i) => (
-          <SwiperSlide key={i}>
-            <MovieCard item={item} category={props.category} />
-          </SwiperSlide>
-        ))}
+        {items.length === 0 ? (
+          <h2>There is no similar movie.</h2>
+        ) : (
+          items.map((item, i) => (
+            <SwiperSlide key={i}>
+              <MovieCard item={item} category={props.category} />
+            </SwiperSlide>
+          ))
+        )}
       </Swiper>
     </div>
   );

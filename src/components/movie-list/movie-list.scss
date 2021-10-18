@@ -1,6 +1,12 @@
 @use "../../scss/_breakpoint.scss" as *;
 
 .movie-list {
+  h2{
+    text-align: center;
+    &:hover{
+      color: #fa983a;
+    }
+  }
   .swiper-slide {
     width: 15%;
 

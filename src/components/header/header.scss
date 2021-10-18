@@ -45,6 +45,7 @@
         @include flex(center, unset);
 
         & > * ~ * {
+            cursor: pointer;
             margin-left: 2rem;
         }
 
