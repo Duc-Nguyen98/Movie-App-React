@@ -15,7 +15,6 @@ const MovieGrid = (props) => {
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
   const { keyword } = useParams();
-  const [checkKeyWord, setCheckKeyWord] = useState(false);
 
   useEffect(() => {
     const getList = async () => {
@@ -36,8 +35,7 @@ const MovieGrid = (props) => {
       } else {
         const params = { query: keyword };
         response = await movieApi.search(props.category, { params });
-        // response.results.length === 0 && setCheckKeyWord(true);
-        // return setCheckKeyWord(false);
+       
       }
       setItems(response.results);
       setTotalPage(response.total_pages);
