@@ -4,7 +4,7 @@ Date:   12-Oct-2021
 ==========================================*/
 import React, { useRef, useEffect } from "react";
 import "./header.scss";
-import Logo from "../../assets/tmovie.png";
+import LogoText from "../../assets/logo-text.png";
 
 import { Link, useLocation } from "react-router-dom";
 
